@@ -2,7 +2,7 @@ import {defineStore} from 'pinia';
 import {useRouter} from 'vue-router';
 import dbUtils from 'utils/util.strotage.js'
 import {authLogin} from "@/api/modules/api.login";
-import {ZyNotification} from "utils/util.toast";
+import {CustNotification} from "utils/util.toast";
 import {usersFindOne} from "@/api/modules/api.users.js";
 import {rolesFindOne} from "@/api/modules/api.roles.js";
 import setting from "@/setting.js";

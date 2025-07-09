@@ -1237,9 +1237,8 @@ const defaultProps = {
 let ruleForm = ref({})
 
 const rules = reactive({
-  roleName: [{required: true, message: '角色名称不能为空', trigger: 'blur'}],
-  roleAuth: [{required: true, message: '角色标识不能为空', trigger: 'blur'}],
-  perms: [{required: true, message: '权限不能为空', trigger: 'blur'}],
+  groupName: [{required: true, message: '分组名称不能为空', trigger: 'blur'}],
+  remark: [{required: false, message: '备注', trigger: 'blur'}],
 })
 const emits = defineEmits(['save', 'close'])
 const props = defineProps({
@@ -1289,46 +1288,13 @@ onMounted(() => {
              label-width="auto" class="demo-ruleForm" size="default">
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="角色名称" prop="roleName">
-            <el-input v-model="ruleForm.roleName" autocomplete="off"/>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="角色标识" prop="roleAuth">
-            <el-input v-model="ruleForm.roleAuth" autocomplete="off"/>
+          <el-form-item label="分组名称" prop="groupName">
+            <el-input v-model="ruleForm.groupName" autocomplete="off"/>
           </el-form-item>
         </el-col>
       </el-row>
       <el-form-item label="备注" prop="remark">
         <el-input type="textarea" v-model="ruleForm.remark" autocomplete="off"/>
-      </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-switch active-text="正常" inactive-text="停用" v-model="ruleForm.status"/>
-      </el-form-item>
-      <el-form-item label="权限" prop="perms">
-       <el-scrollbar max-height="300px">
-         <el-tree
-             ref="treeRef"
-             class="filter-tree"
-             show-checkbox
-             :data="data"
-             :props="defaultProps"
-             default-expand-all
-         >
-           <template #default="{ node, data }">
-             <div class="custom-tree-node">
-               <div>
-                 <span>{{ node.data.name }}</span>
-                 <el-tag style="margin-left: 8px" v-show="node.data.key">
-                   <el-icon><Orange /></el-icon>
-                   {{
-                     node.data.key
-                   }}</el-tag>
-               </div>
-             </div>
-           </template>
-         </el-tree>
-       </el-scrollbar>
       </el-form-item>
     </el-form>
     <div class="form-footer">
@@ -1348,5 +1314,8 @@ onMounted(() => {
   border: 1px solid var(--el-border-color);
   padding: 20px;
   border-radius: 8px;
+}
+* {
+  font-family: 'Charlie Text', sans-serif;
 }
 </style>

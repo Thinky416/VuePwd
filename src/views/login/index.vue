@@ -76,8 +76,6 @@
         <div class="info-b">
           <span>”</span>
         </div>
-        
-        <!-- <ZyLogo/> -->
       </div>
     </aside>
 

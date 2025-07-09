@@ -1,5 +1,5 @@
 <script setup>
-import {ZyNotification} from "@/utils/util.toast.js";
+import {CustNotification} from "@/utils/util.toast.js";
 
 const ruleFormRef = ref()
 const loading = ref(false)
@@ -34,10 +34,10 @@ const submitForm = (formEl) => {
       /*let FUC = ruleForm.value._id ? 'update' : 'save'
       FUC(ruleForm.value).then(res => {
         emits('close', true)
-        ZyNotification.success('操作成功！')
+        CustNotification.success('操作成功！')
       })*/
       emits('close', true)
-      ZyNotification.success('操作成功！')
+      CustNotification.success('操作成功！')
     } else {
       console.log('error submit!')
     }

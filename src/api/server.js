@@ -1,6 +1,6 @@
 import axios from 'axios';
 import dbUtils from "utils/util.strotage";
-import {ZyNotification} from "../utils/util.toast";
+import {CustNotification} from "../utils/util.toast";
 import router from '@/router'
 // 创建 Axios 实例
 const instance = axios.create({
@@ -93,26 +93,26 @@ const handleRequestError = (error) => {
         // 在这里可以进行错误处理逻辑，例如弹出错误提示、记录错误日志等
         switch (status) {
             case 400:
-                ZyNotification.error(error.response.data.message || '参数校验失败')
+                CustNotification.error(error.response.data.message || '参数校验失败')
                 return Promise.reject(error.response.data.message ?? '参数json解析失败');
             case 401:
                 router.push({path: '/login'})
-                ZyNotification.error('账号已过期,请重新登录')
+                CustNotification.error('账号已过期,请重新登录')
 
                 return Promise.reject({error: 'jwt expired', message: '账号已过期,请重新登录'});
 
             case 404:
                 console.error('404:', error.response.data.message);
 
-                ZyNotification.error(error.response.data.message || '资源不存在')
+                CustNotification.error(error.response.data.message || '资源不存在')
                 return Promise.reject({error: '接口不存在', message: error.response.data.message});
             case 500:
                 console.error('服务器内部错误:', error.response.data.message);
 
-                ZyNotification.error('服务器内部错误')
+                CustNotification.error('服务器内部错误')
                 return Promise.reject({error: '服务器内部错误', message: error.response.data.message});
             default:
-                ZyNotification.error('服务器响应错误')
+                CustNotification.error('服务器响应错误')
 
                 console.error('服务器响应错误:', error.response.data);
         }
@@ -120,12 +120,12 @@ const handleRequestError = (error) => {
     } else if (error.request) {
         // 请求未收到响应
         console.error('请求未收到响应:', error.request);
-        ZyNotification.error('请求未收到响应')
+        CustNotification.error('请求未收到响应')
         // 在这里可以进行错误处理逻辑，例如弹出错误提示、记录错误日志等
     } else {
         // 请求配置出错
         console.error('请求配置出错:', error.message);
-        ZyNotification.error('请求配置出错')
+        CustNotification.error('请求配置出错')
         // 在这里可以进行错误处理逻辑，例如弹出错误提示、记录错误日志等
     }
 }

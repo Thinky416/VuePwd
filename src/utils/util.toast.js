@@ -1,4 +1,4 @@
-export const ZyConfirm = function (content, title = '提示') {
+export const Confirm = function (content, title = '提示') {
     return new Promise((resolve, reject) => {
         ElMessageBox.confirm(
             content,
@@ -17,6 +17,8 @@ export const ZyConfirm = function (content, title = '提示') {
             })
     })
 }
+
+
 
 class Message {
     info(content = '提示信息', duration) {
@@ -72,4 +74,4 @@ class Notification {
 }
 
 export const ZyMessage = new Message();
-export const ZyNotification = new Notification();
+export const CustNotification = new Notification();

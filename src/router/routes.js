@@ -1,7 +1,6 @@
 export const Layout = () => import("@/layout/index.vue");
 /**
  * @Description: 路由项说明
- * @Author: ZHOU YI
  * @Date: 2024-08-15 09:39
  *
  *  {
@@ -251,24 +250,24 @@ const constantRoutes = [
                 ]
             },
 
-            {
-                path: "https://gitee.com/Z568_568/ZHOUYI-ADMIN",
-                name: 'link',
-                meta: {
-                    icon: "Link",
-                    title: '文档教程（准备中）',
-                    isLink: true
-                },
-            },
-            {
-                path: "https://gitee.com/Z568_568",
-                name: 'link',
-                meta: {
-                    icon: "Link",
-                    title: '关于作者',
-                    isLink: true
-                },
-            },
+            // {
+            //     path: "https://gitee.com/Z568_568/ZHOUYI-ADMIN",
+            //     name: 'link',
+            //     meta: {
+            //         icon: "Link",
+            //         title: '文档教程（准备中）',
+            //         isLink: true
+            //     },
+            // },
+            // {
+            //     path: "https://gitee.com/Z568_568",
+            //     name: 'link',
+            //     meta: {
+            //         icon: "Link",
+            //         title: '关于作者',
+            //         isLink: true
+            //     },
+            // },
             {
                 path: "https://element-plus.org/zh-CN/component/icon.html",
                 name: 'link',
@@ -284,6 +283,110 @@ const constantRoutes = [
                 component: () => import("@/views/sys/error-page/401.vue"),
                 meta: {hidden: true},
             },
+                        {
+                path: "/pwd",
+                name: "pwd",
+                redirect: "/pwd",
+                meta: {
+                    title: "密码管理",
+                    icon: "",
+
+                    requiresAuth: true,
+                    cache: true,
+                    perms: [
+                        "/pwd"
+                    ],
+
+                },
+                children: [
+                    {
+                        path: "/group",
+                        component: () => import("@/views/pwd/group/dir-group.vue"),
+                        name: "group",
+                        meta: {
+                            title: "分组管理",
+                            icon: "NoteBook",
+                            requiresAuth: true,
+                            cache: true,
+                            perms: [
+                                // "/sys/users/list",
+                                // "/sys/users/create",
+                                // "/sys/users/delete",
+                                // "/sys/users/update",
+                            ],
+                        },
+                    },
+                    {
+                        path: "/items",
+                        component: () => import("@/views/pwd/item/dir-item.vue"),
+                        name: "items",
+                        meta: {
+                            title: "数据管理",
+                            icon: "",
+                            requiresAuth: true,
+                            cache: true,
+                            perms: [
+                                // "/sys/permissions/list",
+                                // "/sys/permissions/create",
+                                // "/sys/permissions/delete",
+                                // "/sys/permissions/update",
+                            ],
+                        },
+
+                    },
+                    // {
+                    //     path: "/logs",
+                    //     name: "logs",
+                    //     meta: {
+                    //         title: "日志管理",
+                    //         icon: "",
+                    //         requiresAuth: true,
+                    //         cache: true,
+                    //         perms: [
+                    //             "/sys/logs",
+                    //         ],
+                    //     },
+                    //     children: [
+                    //         {
+                    //             path: "/logs/login",
+                    //             component: () => import("@/views/sys/logs/login/dir-login-logs.vue"),
+                    //             name: "logs-login",
+                    //             meta: {
+                    //                 title: "登录日志",
+                    //                 icon: "",
+                    //                 requiresAuth: true,
+                    //                 cache: true,
+                    //                 perms: [
+                    //                     "/sys/logs/list",
+                    //                     "/sys/logs/create",
+                    //                     "/sys/logs/delete",
+                    //                     "/sys/logs/update",
+                    //                 ],
+                    //             },
+                    //         },
+                    //         {
+                    //             path: "/logs/opt",
+                    //             component: () => import("@/views/sys/logs/opt/dir-opt-logs.vue"),
+                    //             name: "logs-opt",
+                    //             meta: {
+                    //                 title: "操作日志",
+                    //                 icon: "",
+                    //                 requiresAuth: true,
+                    //                 cache: true,
+                    //                 perms: [
+                    //                     "/sys/logs/list",
+                    //                     "/sys/logs/create",
+                    //                     "/sys/logs/delete",
+                    //                     "/sys/logs/update",
+                    //                 ],
+                    //             },
+                    //         }
+                    //     ]
+
+                    // },
+                ]
+            },
+
         ]
     },
     {

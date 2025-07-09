@@ -7,18 +7,15 @@ import GetPage from "@/views/components/page/get-page.vue";
 import ViewPage from "@/views/components/page/view-page.vue";
 import ViewPermissions from "@/views/sys/permissions/view-permissions.vue";
 import GetPermissions from "@/views/sys/permissions/get-permissions.vue";
-import GetRoles from "@/views/sys/roles/get-roles.vue";
-import ViewRoles from "@/views/sys/roles/view-roles.vue";
+import GetGroup from "@/views/pwd/group/get-group.vue";
+import ViewGroup from "@/views/pwd/group/view-group.vue";
 
 const tableData = ref([])
 const fields = reactive([
-  // {key: 'checkBox', name: '选择', show: true, align: "center", enableSort: false, fixed: false},
-  {key: 'roleName', name: '角色名称', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'roleAuth', name: '角色标识', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'status', name: '状态', show: true, align: "center", enableSort: false, fixed: false},
+  {key: 'groupName', name: '分组名称', show: true, align: "left", enableSort: false, fixed: false},
   {key: 'remark', name: '备注', show: true, align: "center", enableSort: false, fixed: false},
-  {key: 'createdAt', name: '创建时间', show: true, align: "center", enableSort: true, fixed: false},
-  {key: 'updatedAt', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},
+  {key: 'createdDtm', name: '创建时间', show: true, align: "center", enableSort: true, fixed: false},
+  {key: 'updatedDtm', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},
   {key: 'toolButton', name: '操作', show: true, align: "center", width: '220', enableSort: false, fixed: 'right'},
 ])
 const loading = ref({
@@ -33,7 +30,7 @@ const query = reactive({
     pageSize: 15
   },
   sort: {
-    columnKey: "createdAt",
+    columnKey: "createdDtm",
     order: "ascend"
   }
 })
@@ -81,8 +78,8 @@ const goReset = () => {
 
 function traverseTree(node) {
   // 处理当前节点
-  node.createdAt = TimeUtils.formatTime(node.createdAt)
-  node.updatedAt = TimeUtils.formatTime(node.updatedAt)
+  node.createdDtm = TimeUtils.formatTime(node.createdDtm)
+  node.updatedDtm = TimeUtils.formatTime(node.updatedDtm)
   // 递归遍历子节点
   if (node.children) {
     node.children.forEach(child => {
@@ -101,142 +98,24 @@ const getDataList = async () => {
         "result": [
           {
             "_id": "64a423816f4197cfc70375e3",
-            "roleName": "超级管理员",
-            "roleAuth": "SUPER-ADMIN",
-            "perms": [
-              "*"
-            ],
-            "remark": "拥有所有权限",
-            "status": true,
-            "createdAt": "2023-07-04T13:49:53.993Z",
-            "updatedAt": "2023-07-04T13:50:42.566Z"
+            "groupName": "ASL-EPMI",
+            "remark": "项目",
+            "createdDtm": "2023-07-04T13:49:53.993Z",
+            "updatedDtm": "2023-07-04T13:50:42.566Z"
           },
           {
             "_id": "64a426a56f4197cfc70375f6",
-            "roleName": "普通管理员",
-            "roleAuth": "NORMALL-ADMIN",
-            "perms": [
-              "index",
-              "blog:blog_articles:list",
-              "blog:comments:list",
-              "blog:messages:list",
-              "sys:dictionaries:list",
-              "sys:dictionariesvalues:list"
-            ],
-            "remark": "拥有部分权限",
-            "status": true,
-            "createdAt": "2023-07-04T14:03:17.858Z",
-            "updatedAt": "2023-11-23T04:03:48.650Z"
+            "groupName": "ASL",
+            "remark": "公司事务",
+            "createdDtm": "2023-07-04T14:03:17.858Z",
+            "updatedDtm": "2023-11-23T04:03:48.650Z"
           },
           {
             "_id": "64a7aa20a971facd04696242",
-            "roleName": "访客",
-            "roleAuth": "VISITOR-ADMIN",
-            "perms": [
-              "index",
-              "components:echart:chinaMap",
-              "components:echart:worldMap",
-              "components:echart:line",
-              "components:echart:pie",
-              "pages",
-              "pages:all",
-              "dev:icon",
-              "dev:codes:list",
-              "components:editor",
-              "components:editor:Tinymce",
-              "components:editor:Vditor",
-              "components:editor:VMdEditor",
-              "components",
-              "components:echart",
-              "components:echart:guizhouMap",
-              "sys:permissions:list",
-              "blog:blog_articles:list",
-              "blog:portfolios:list",
-              "sys:roles:list",
-              "blog:messages:list",
-              "sys:dictionaries:list",
-              "sys:dictionariesvalues:list",
-              "blog:frontendsetups:list",
-              "blog:comments:list",
-              "sys:visitors:list",
-              "sys:users_opt_logs:list",
-              "sys:resources:list",
-              "sys:users",
-              "sys:roles",
-              "sys:permissions",
-              "sys:resources",
-              "sys:visitors",
-              "sys:dictionaries",
-              "sys:users:list",
-              "sys:users:create",
-              "sys:users:delete",
-              "sys:users:reset",
-              "sys:roles:create",
-              "sys:roles:delete",
-              "sys:roles:update",
-              "sys:permissions:create",
-              "sys:permissions:delete",
-              "sys:permissions:update",
-              "sys:permissions:stop",
-              "sys:users_opt_logs:create",
-              "sys:users_opt_logs:delete",
-              "sys:users_opt_logs:update",
-              "sys:users_opt_logs:deleteAll",
-              "sys:users_opt_logs:export",
-              "sys:resources:create",
-              "sys:resources:delete",
-              "sys:resources:update",
-              "sys:visitors:create",
-              "sys:visitors:delete",
-              "sys:visitors:update",
-              "sys:dictionaries:create",
-              "sys:dictionaries:delete",
-              "sys:dictionaries:update",
-              "sys:dictionariesvalues:create",
-              "sys:dictionariesvalues:delete",
-              "sys:dictionariesvalues:update",
-              "dev",
-              "dev:codes",
-              "dev:codes:singleCurdFrontAndBack",
-              "dev:codes:delete",
-              "dev:codes:deleteAll",
-              "blog:blog_articles",
-              "blog:portfolios",
-              "blog:messages",
-              "blog:frontendsetups",
-              "blog:comments",
-              "blog:blog_articles:create",
-              "blog:blog_articles:delete",
-              "blog:blog_articles:update",
-              "blog:portfolios:create",
-              "blog:portfolios:delete",
-              "blog:portfolios:update",
-              "blog:messages:create",
-              "blog:messages:delete",
-              "blog:messages:update",
-              "blog:messages:reply",
-              "blog:messages:deleteAll",
-              "blog:frontendsetups:create",
-              "blog:frontendsetups:delete",
-              "blog:frontendsetups:update",
-              "blog:comments:create",
-              "blog:comments:delete",
-              "blog:comments:update",
-              "blog:comments:deleteAll",
-              "blog:anouncements",
-              "blog:anouncements:list",
-              "blog:anouncements:create",
-              "blog:anouncements:delete",
-              "blog:anouncements:update",
-              "blog",
-              "sys:users_opt_logs:import",
-              "sys:users_opt_logs",
-              "sys"
-            ],
-            "remark": "一般访客，更多的是有查看权限",
-            "status": true,
-            "createdAt": "2023-07-07T06:01:04.121Z",
-            "updatedAt": "2024-05-27T09:26:12.030Z"
+            "groupName": "Thinky",
+            "remark": "私人",
+            "createdDtm": "2023-07-07T06:01:04.121Z",
+            "updatedDtm": "2024-05-27T09:26:12.030Z"
           }
         ],
         "current": 1,
@@ -249,8 +128,8 @@ const getDataList = async () => {
     query.pagination.pageSize = pageSize
     tempData.total = total
     for (const data of result) {
-      data.createdAt = TimeUtils.formatTime(data.createdAt)
-      data.updatedAt = TimeUtils.formatTime(data.updatedAt)
+      data.createdDtm = TimeUtils.formatTime(data.createdDtm)
+      data.updatedDtm = TimeUtils.formatTime(data.updatedDtm)
     }
     result.forEach(node => {
       traverseTree(node);
@@ -270,15 +149,17 @@ const goEdit = (row, title, add) => {
   }
   tempData.dialogTitle = title ? title : row ? '修改' : '新增'
 }
+
+
 // 删除
 const goDelete = (row) => {
   Confirm('确认删除该条数据？').then(ok => {
-    // ok && fwsbRemove(row.id).then(res => {
-    //   if (res.data) {
-    //     goPage(1)
-    //     CustNotification.success('删除成功！')
-    //   }
-    // })
+    ok && fwsbRemove(row.id).then(res => {
+      if (res.data) {
+        goPage(1)
+        CustNotification.success('删除成功！')
+      }
+    })
   })
 }
 // 详情
@@ -312,7 +193,7 @@ goPage(1)
             @reset="goReset"
         >
           <el-form-item prop="name">
-            <el-input v-model="query.params.name" clearable @change="goPage(1)" placeholder="权限名称查询"/>
+            <el-input v-model="query.params.name" clearable @change="goPage(1)" placeholder="分组名称查询"/>
           </el-form-item>
         </ZyTableQueryForm>
         <ZyTableFilter :fields="fields"
@@ -350,11 +231,11 @@ goPage(1)
                                :fixed="field.fixed">
                 <template #default="scope">
                   <ZyTableButtons
-                      viewAuth="sys:roles:list"
-                      editAuth="sys:roles:update"
-                      deleteAuth="sys:roles:delete"
+                      viewAuth="pwd:group:list"
+                      editAuth="pwd:group:update"
+                      deleteAuth="pwd:group:delete"
                       :showView="false"
-                      editText="编辑 / 权限"
+                      editText="编辑"
                       @view="goView(scope.row)"
                       @edit="goEdit(scope.row)"
                       @delete="goDelete(scope.row)"
@@ -389,17 +270,19 @@ goPage(1)
                 width="40%"
                 :title="tempData.dialogTitle"
                 @close="close">
-      <GetRoles :update-data="tempData.updateData" @close="close"/>
+      <GetGroup :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
     <ZyElDialog :show="tempData.showView"
                 title="查看详情"
                 @close="close">
-      <ViewRoles :update-data="tempData.updateData" @close="close"/>
+      <ViewGroup :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
 
   </section>
 </template>
 
 <style scoped lang="scss">
-
+* {
+  font-family: 'Charlie Text', sans-serif;
+}
 </style>

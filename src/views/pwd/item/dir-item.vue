@@ -5,18 +5,16 @@ import {TimeUtils} from "utils/util.time";
 import {Confirm, CustNotification} from "@/utils/util.toast.js";
 import GetPage from "@/views/components/page/get-page.vue";
 import ViewPage from "@/views/components/page/view-page.vue";
-import ViewPermissions from "@/views/sys/permissions/view-permissions.vue";
-import GetPermissions from "@/views/sys/permissions/get-permissions.vue";
-import GetRoles from "@/views/sys/roles/get-roles.vue";
-import ViewRoles from "@/views/sys/roles/view-roles.vue";
+import GetItems from "@/views/pwd/item/get-items.vue";
+import ViewItems from "@/views/pwd/item/view-items.vue";
 
 const tableData = ref([])
 const fields = reactive([
   // {key: 'checkBox', name: '选择', show: true, align: "center", enableSort: false, fixed: false},
-  {key: 'roleName', name: '角色名称', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'roleAuth', name: '角色标识', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'status', name: '状态', show: true, align: "center", enableSort: false, fixed: false},
-  {key: 'remark', name: '备注', show: true, align: "center", enableSort: false, fixed: false},
+  {key: 'name', name: '名称', show: true, align: "left", enableSort: false, fixed: false},
+  {key: 'url', name: '网址', show: true, align: "left", enableSort: false, fixed: false},
+  {key: 'logonName', name: '登录名', show: true, align: "left", enableSort: false, fixed: false},
+  {key: 'logonPwd', name: '登录密码', show: true, align: "center", enableSort: false, fixed: false},
   {key: 'createdAt', name: '创建时间', show: true, align: "center", enableSort: true, fixed: false},
   {key: 'updatedAt', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},
   {key: 'toolButton', name: '操作', show: true, align: "center", width: '220', enableSort: false, fixed: 'right'},
@@ -98,150 +96,76 @@ const getDataList = async () => {
     // const dataList = await usersList(query)
     const dataList = {
       data: {
-        "result": [
+        current: 1,
+        pageSize: 10,
+        total: 100,
+        result: [
           {
-            "_id": "64a423816f4197cfc70375e3",
-            "roleName": "超级管理员",
-            "roleAuth": "SUPER-ADMIN",
-            "perms": [
-              "*"
-            ],
-            "remark": "拥有所有权限",
-            "status": true,
-            "createdAt": "2023-07-04T13:49:53.993Z",
-            "updatedAt": "2023-07-04T13:50:42.566Z"
+            "_id": "64a6767b2f517ae48b51de4a",
+            "name": "ASL",
+            "sortOrder": 0,
+            "createdAt": "2023-07-06T08:08:27.735Z",
+            "updatedAt": "2023-07-18T03:16:59.334Z",
+            "disabled": false
           },
           {
-            "_id": "64a426a56f4197cfc70375f6",
-            "roleName": "普通管理员",
-            "roleAuth": "NORMALL-ADMIN",
-            "perms": [
-              "index",
-              "blog:blog_articles:list",
-              "blog:comments:list",
-              "blog:messages:list",
-              "sys:dictionaries:list",
-              "sys:dictionariesvalues:list"
-            ],
-            "remark": "拥有部分权限",
+            "_id": "64a676872f517ae48b51de50",
+            "name": "ASL_EPMI",
+            "sortOrder": 0,
             "status": true,
-            "createdAt": "2023-07-04T14:03:17.858Z",
-            "updatedAt": "2023-11-23T04:03:48.650Z"
-          },
-          {
-            "_id": "64a7aa20a971facd04696242",
-            "roleName": "访客",
-            "roleAuth": "VISITOR-ADMIN",
-            "perms": [
-              "index",
-              "components:echart:chinaMap",
-              "components:echart:worldMap",
-              "components:echart:line",
-              "components:echart:pie",
-              "pages",
-              "pages:all",
-              "dev:icon",
-              "dev:codes:list",
-              "components:editor",
-              "components:editor:Tinymce",
-              "components:editor:Vditor",
-              "components:editor:VMdEditor",
-              "components",
-              "components:echart",
-              "components:echart:guizhouMap",
-              "sys:permissions:list",
-              "blog:blog_articles:list",
-              "blog:portfolios:list",
-              "sys:roles:list",
-              "blog:messages:list",
-              "sys:dictionaries:list",
-              "sys:dictionariesvalues:list",
-              "blog:frontendsetups:list",
-              "blog:comments:list",
-              "sys:visitors:list",
-              "sys:users_opt_logs:list",
-              "sys:resources:list",
-              "sys:users",
-              "sys:roles",
-              "sys:permissions",
-              "sys:resources",
-              "sys:visitors",
-              "sys:dictionaries",
-              "sys:users:list",
-              "sys:users:create",
-              "sys:users:delete",
-              "sys:users:reset",
-              "sys:roles:create",
-              "sys:roles:delete",
-              "sys:roles:update",
-              "sys:permissions:create",
-              "sys:permissions:delete",
-              "sys:permissions:update",
-              "sys:permissions:stop",
-              "sys:users_opt_logs:create",
-              "sys:users_opt_logs:delete",
-              "sys:users_opt_logs:update",
-              "sys:users_opt_logs:deleteAll",
-              "sys:users_opt_logs:export",
-              "sys:resources:create",
-              "sys:resources:delete",
-              "sys:resources:update",
-              "sys:visitors:create",
-              "sys:visitors:delete",
-              "sys:visitors:update",
-              "sys:dictionaries:create",
-              "sys:dictionaries:delete",
-              "sys:dictionaries:update",
-              "sys:dictionariesvalues:create",
-              "sys:dictionariesvalues:delete",
-              "sys:dictionariesvalues:update",
-              "dev",
-              "dev:codes",
-              "dev:codes:singleCurdFrontAndBack",
-              "dev:codes:delete",
-              "dev:codes:deleteAll",
-              "blog:blog_articles",
-              "blog:portfolios",
-              "blog:messages",
-              "blog:frontendsetups",
-              "blog:comments",
-              "blog:blog_articles:create",
-              "blog:blog_articles:delete",
-              "blog:blog_articles:update",
-              "blog:portfolios:create",
-              "blog:portfolios:delete",
-              "blog:portfolios:update",
-              "blog:messages:create",
-              "blog:messages:delete",
-              "blog:messages:update",
-              "blog:messages:reply",
-              "blog:messages:deleteAll",
-              "blog:frontendsetups:create",
-              "blog:frontendsetups:delete",
-              "blog:frontendsetups:update",
-              "blog:comments:create",
-              "blog:comments:delete",
-              "blog:comments:update",
-              "blog:comments:deleteAll",
-              "blog:anouncements",
-              "blog:anouncements:list",
-              "blog:anouncements:create",
-              "blog:anouncements:delete",
-              "blog:anouncements:update",
-              "blog",
-              "sys:users_opt_logs:import",
-              "sys:users_opt_logs",
-              "sys"
-            ],
-            "remark": "一般访客，更多的是有查看权限",
-            "status": true,
-            "createdAt": "2023-07-07T06:01:04.121Z",
-            "updatedAt": "2024-05-27T09:26:12.030Z"
+            "createdAt": "2023-07-06T08:08:39.650Z",
+            "updatedAt": "2023-07-06T13:26:57.493Z",
+            "disabled": false,
+            "children": [
+              {
+                "_id": "64a676942f517ae48b51de56",
+                "name": "Jira",
+                "url":"http://baidu.com",
+                "logonName":"Test",
+                "logonPwd":"Abcd1234",
+                "sortOrder": 0,
+                "createdAt": "2023-07-06T08:08:52.375Z",
+                "updatedAt": "2023-07-07T02:37:51.339Z",
+                "disabled": false,
+              },
+              {
+                "_id": "64a6f171d2fac9dd58d3025c",
+                "name": "哔哩哔哩",
+                "url":"http://bilibili.com",
+                "logonName":"Test",
+                "logonPwd":"Abcd1234",
+                "sortOrder": 0,
+                "createdAt": "2023-07-06T08:08:52.375Z",
+                "updatedAt": "2023-07-07T02:37:51.339Z",
+                "disabled": false,
+                "children": [
+                  {
+                    "_id": "64a6f171d2fac9dd58d3025d",
+                    "name": "主号",
+                    "logonName":"Test1111",
+                    "logonPwd":"Abcd12341111",
+                    "sortOrder": 0,
+                    "status": true,
+                    "createdAt": "2023-07-06T16:53:05.026Z",
+                    "updatedAt": "2023-07-06T16:53:05.026Z",
+                    "disabled": false
+                  },
+                  {
+                    "_id": "64a6f171d2fac9dd58d3025e",
+                     "name": "小号",
+                    "logonName":"Test2222",
+                    "logonPwd":"Abcd12342222",
+                    "sortOrder": 0,
+                    "status": true,
+                    "createdAt": "2023-07-06T16:53:05.026Z",
+                    "updatedAt": "2023-07-06T16:53:05.026Z",
+                    "disabled": false
+                  },
+                ]
+              }
+            ]
           }
-        ],
-        "current": 1,
-        "pageSize": 10,
-        "total": 3
+        ]
       }
     }
     const {current, pageSize, result, total} = dataList.data
@@ -262,11 +186,11 @@ const getDataList = async () => {
   }
 }
 // 修改
-const goEdit = (row, title, add) => {
+const goEdit = (row, title,add) => {
   tempData.showEdit = true
   tempData.updateData = row ? {...row} : {}
-  if (add || !row) {
-    tempData.updateData.add = true
+  if (add || !row){
+    tempData.updateData.add=true
   }
   tempData.dialogTitle = title ? title : row ? '修改' : '新增'
 }
@@ -291,7 +215,7 @@ const goView = (row) => {
 const close = (_t) => {
   tempData.showView = false
   tempData.showEdit = false
-  tempData.updateData = {}
+  tempData.updateData={}
   _t && goPage(1)
 }
 
@@ -312,7 +236,7 @@ goPage(1)
             @reset="goReset"
         >
           <el-form-item prop="name">
-            <el-input v-model="query.params.name" clearable @change="goPage(1)" placeholder="权限名称查询"/>
+            <el-input v-model="query.params.name" clearable @change="goPage(1)" placeholder="数据名称查询"/>
           </el-form-item>
         </ZyTableQueryForm>
         <ZyTableFilter :fields="fields"
@@ -330,7 +254,15 @@ goPage(1)
               <el-table-column v-if="field.key==='checkBox'"
                                :align="field.align"
                                type="selection"></el-table-column>
-
+              <el-table-column v-else-if="field.key==='auth'"
+                               :label="field.name"
+                               :width="field.width"
+                               :fixed="field.fixed"
+                               :align="field.align">
+                <template #default="scope">
+                  <el-tag :type="scope.row.auth?'success':'info'">{{ scope.row.auth ? '是' : '否' }}</el-tag>
+                </template>
+              </el-table-column>
               <el-table-column v-else-if="field.key==='status'"
                                :label="field.name"
                                :width="field.width"
@@ -343,6 +275,24 @@ goPage(1)
                       v-model="scope.row.status"></el-switch>
                 </template>
               </el-table-column>
+              <el-table-column v-else-if="field.key==='key'"
+                               :label="field.name"
+                               :width="field.width"
+                               :fixed="field.fixed"
+                               :align="field.align">
+                <template #default="scope">
+                  <el-tag v-if="scope.row.key">{{ scope.row.key }}</el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column v-else-if="field.key==='parent_key'"
+                               :label="field.name"
+                               :width="field.width"
+                               :fixed="field.fixed"
+                               :align="field.align">
+                <template #default="scope">
+                  <el-tag v-if="scope.row.parent_key">{{ scope.row.parent_key }}</el-tag>
+                </template>
+              </el-table-column>
               <el-table-column v-else-if="field.key==='toolButton'"
                                :align="field.align"
                                :label="field.name"
@@ -350,15 +300,15 @@ goPage(1)
                                :fixed="field.fixed">
                 <template #default="scope">
                   <ZyTableButtons
-                      viewAuth="sys:roles:list"
-                      editAuth="sys:roles:update"
-                      deleteAuth="sys:roles:delete"
+                      viewAuth="sys:users:list"
+                      editAuth="sys:users:update"
+                      deleteAuth="sys:users:delete"
                       :showView="false"
-                      editText="编辑 / 权限"
                       @view="goView(scope.row)"
                       @edit="goEdit(scope.row)"
                       @delete="goDelete(scope.row)"
                   >
+                    <el-button type="primary" @click="goEdit(scope.row,'新增下级','add')">新增下级</el-button>
                   </ZyTableButtons>
                 </template>
               </el-table-column>
@@ -375,13 +325,13 @@ goPage(1)
             </template>
           </template>
         </ZyElTable>
-        <ZyElPagination
-            :currentPage="query.pagination.current"
-            :pageSize="query.pagination.pageSize"
-            :total="tempData.total"
-            @sizeChange="sizeChange"
-            @currentChange="currentChange"
-        />
+        <!--        <ZyElPagination-->
+        <!--            :currentPage="query.pagination.current"-->
+        <!--            :pageSize="query.pagination.pageSize"-->
+        <!--            :total="tempData.total"-->
+        <!--            @sizeChange="sizeChange"-->
+        <!--            @currentChange="currentChange"-->
+        <!--        />-->
       </section>
     </transition>
 
@@ -389,12 +339,12 @@ goPage(1)
                 width="40%"
                 :title="tempData.dialogTitle"
                 @close="close">
-      <GetRoles :update-data="tempData.updateData" @close="close"/>
+      <GetItems :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
     <ZyElDialog :show="tempData.showView"
                 title="查看详情"
                 @close="close">
-      <ViewRoles :update-data="tempData.updateData" @close="close"/>
+      <ViewItems :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
 
   </section>
