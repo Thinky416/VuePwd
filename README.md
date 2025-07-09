@@ -92,8 +92,6 @@ Nodejs : v20.11.0
 ```js
 /**
  * @Description: 路由项说明
- * @Author: ZHOU YI
- * @Date: 2024-08-15 09:39
  *
  *  {
  *     path: "/components",          // 路由地址
