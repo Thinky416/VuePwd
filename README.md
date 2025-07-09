@@ -1,10 +1,10 @@
 <p>2025/07/09 复制前端开源项 </p>
 
 <p align="center">
- <h1 style="color: #3f51b5" align="center"> ZHOUYI·ADMIN</h1>
+ <h1 style="color: #3f51b5" align="center">VuePwd</h1>
   </p>
 
-<h3 align="center">" 🔥  纯前端) "</h3>
+<h3 align="center">" 🔥  (纯前端) "</h3>
   <p align="center">
     基于 Vue3 + ElementPlus + JavaScript + Pinia +Vite.搭建
     <br />
