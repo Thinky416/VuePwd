@@ -94,7 +94,7 @@ const getDataList = async () => {
           {
             "_id": "66724424a9b358ece99a82af",
             "username": "admin",
-            "nickname": "书中枫叶",
+            "nickname": "C柠檬呐",
             "password": "$2a$10$OwFwtDsL7ncNF1uTLuluV.ikuu2sOqG3V6JsAgZSMNVhzvlD.Vj76",
             "roleId": "6672431d8e067423d01ca17c",
             "status": true,
@@ -116,8 +116,8 @@ const getDataList = async () => {
           },
           {
             "_id": "6673a68f6848a6a2da37fc8d",
-            "username": "ZHOUYI123",
-            "nickname": "书中枫叶",
+            "username": "VuePwd123",
+            "nickname": "C柠檬呐",
             "password": "$2a$10$Ya/pVXZaQ3mJMy.yo27Lw.tnW81kFMsz0LIHF/KVxKwR.1hRX6hv.",
             "roleId": "667243455a75e54067c1715b",
             "status": true,

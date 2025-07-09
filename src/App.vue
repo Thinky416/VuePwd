@@ -18,8 +18,7 @@ const locale = zhCn
 
 <template>
   <el-config-provider :locale="locale">
-    <!--    水印-->
-    <el-watermark style="height: 100%" :font="font" :content="appStore.watermarking?'ZHOUYI':''" :zIndex="9999">
+    <el-watermark style="height: 100%" :font="font" :content="appStore.watermarking?'VuePwd':''" :zIndex="9999">
       <RouterView/>
     </el-watermark>
   </el-config-provider>

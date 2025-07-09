@@ -81,7 +81,7 @@ router.beforeEach(async (to, from, next) => {
 })
 router.afterEach((to, from) => {
     NProgress.done();
-    window.document.title = to.meta.title + " | ZHOUYI";
+    window.document.title = to.meta.title + " | Thinky";
 })
 
 export default router

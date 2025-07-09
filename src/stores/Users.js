@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('Users', () => {
                 data:{
                     "userInfo": {
                         "username": "admin",
-                        "nickname": "书中枫叶",
+                        "nickname": "C柠檬呐",
                         "userId": "66724424a9b358ece99a82af",
                         "roleId": "6672431d8e067423d01ca17c",
                         "status": true
@@ -46,7 +46,7 @@ export const useAuthStore = defineStore('Users', () => {
             userData.data = {
                 "_id": "66724424a9b358ece99a82af",
                 "username": "admin",
-                "nickname": "书中枫叶",
+                "nickname": "C柠檬呐",
                 "roleId": "6672431d8e067423d01ca17c",
                 "status": true,
                 "createdAt": "2024-06-19T02:36:20.600Z",

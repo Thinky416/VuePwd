@@ -2,33 +2,19 @@
   <section class="home-box">
     <div class="side-logo">
       <transition enter-active-class="animate__animated animate__fadeInLeft">
-        <span class="logo-title">ZHOUYI·ADMIN</span>
+        <span class="logo-title">VuePwd·ADMIN</span>
       </transition>
     </div>
     <div class="info-box">
-      <p class="sub-title" style="font-weight: bold">ZHOUYI·ADMIN ( 纯前端 ) 基于 Vue 3 + JavaScript + Pinia +Vite + ElementPlus.</p>
-      <p>ZHOUYI·ADMIN 是一个现代化的管理后台模板，提供了一系列功能丰富的组件和工具，帮助开发者快速搭建和开发前后台管理应用。
+      <p class="sub-title" style="font-weight: bold">VuePwd( 纯前端 ) 基于 Vue 3 + JavaScript + Pinia +Vite + ElementPlus.</p>
+      <p>VuePwd是一个现代化的管理后台模板，提供了一系列功能丰富的组件和工具，帮助开发者快速搭建和开发前后台管理应用。</p>
         <br>
         对快速构建Vue3全栈项目有很大的帮助，解决每次新建项目基础配置的烦恼.
         <br>
         <p style="font-weight: bold">无论你是一个开发者寻找一个可靠的管理后台模板，还是一个学习者想要深入了解现代前端技术，
-          ZHOUYI·ADMIN 都是一个非常有价值的项目。
+          VuePwd都是一个非常有价值的项目。
           <br>
           因为它弥补了不习惯使用TypeScript开发的同学，使用JavaScript版本就能更快上手熟悉。</p>
-        <p style="font-weight: bold;color: red"><a href="https://gitee.com/Z568_568/ZHOUYI-ADMIN.git" target="_blank">✌️项目如果对您有帮助，希望能得到您的 star 传送门✨</a></p>
-      </p>
-
-       <el-row style="margin-bottom: 15px;display: flex;justify-content: center">
-        <el-space>
-          <el-tag size="large" type="primary" effect="dark">QQ群：703211367</el-tag>
-          <el-tag size="large"  type="primary" effect="dark">微信群：添加 Healer__boy 备注：加群</el-tag>
-        </el-space>
-      </el-row>
-      <el-row style="margin-bottom: 15px;display: flex;justify-content: center">
-        <el-space>
-          <el-tag size="large"  type="danger" effect="dark">合作加我的微信（备注来意）：Healer__boy / QQ: 1840354092</el-tag>
-        </el-space>
-      </el-row>
     </div>
  
     <div style="margin-top: 30px">
@@ -78,7 +64,7 @@ const activities = [
     hollow: true,
   },
   {
-    content: 'ZHOUYI·ADMIN 项目初始化搭建',
+    content: 'VuePwd项目初始化搭建',
     timestamp: '2024-06-24 20:46',
   },
 ]

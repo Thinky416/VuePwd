@@ -1,5 +1,5 @@
 // localStorage.js
-const t = import.meta.env.VITE_APP_WEB_TITLE || 'ZY'
+const t = import.meta.env.VITE_APP_WEB_TITLE || 'Thinky'
 const v = import.meta.env.VITE_APP_WEB_VERSION || '1.0.0'
 export default {
     //********普通数据持久化*********

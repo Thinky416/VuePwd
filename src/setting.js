@@ -2,7 +2,7 @@
 export default {
     // 网站信息
     websiteInfo: {
-        name: 'ZHOUYI',
+        name: 'VuePwd',
         version: '1.0.0',
         desc: '管理平台',
         // logo仅支持在线地址
@@ -27,8 +27,8 @@ export default {
     // 页脚备案信息
     reference: {
         show: true, //是否展示页脚
-        number: '备案号-1',//备案号
-        authorization: 'ZHOUYI', // 站点所属机构
+        number: 'xxx',//备案号
+        authorization: 'VuePwd', // 站点所属机构
         authorizationUrl: 'https://www.zhouyi.run', // 站点所属机构链接
     },
 

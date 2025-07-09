@@ -1,10 +1,10 @@
 <template>
   <section class="login-box">
     <main class="login-main">
-      <ZyLogo class="logo"/>
+      <!-- <ZyLogo class="logo"/> -->
       <section class="login-form-box">
         <div class="form-box-head">
-          <h1>Welcome back</h1>
+          <h1>Password Management</h1>
           <p>
             登录您的帐户
           </p>
@@ -38,7 +38,6 @@
             <el-button style="width: 100%" type="primary" @click="submitForm(ruleFormRef)" :loading="loading">
               登录
             </el-button>
-            <!--            <el-button style="width: 100%" @click="resetForm(ruleFormRef)">重置</el-button>-->
           </el-form-item>
         </el-form>
         <div class="form-box-footer">
@@ -68,15 +67,17 @@
           <span>“</span>
         </div>
         <div class="info-desc">
-                    有时你发现，一咬牙一跺脚又是一天，然后全部困难都变成了过往云烟。那些走过的路、吃过的苦，终会成就更好的你。
+                    XXXXXXXXXXXXXXXXXXXXXXXX
                     <br/>
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    <br/>
+                    XXXXXXXXXX
         </div>
-        <ZyLogo/>
-        <p style="color: #8A9299; font-size: 15px; margin-top: 10px">
-          <a href="https://gitee.com/Z568_568" target="_blank">
-            ZHOUYI·ADMIN 基于 Vue 3 + JavaScript + Pinia +Vite + ElementPlus.搭建 🎉🎉🎉🎉
-          </a>
-        </p>
+        <div class="info-b">
+          <span>”</span>
+        </div>
+        
+        <!-- <ZyLogo/> -->
       </div>
     </aside>
 
@@ -84,11 +85,7 @@
 </template>
 
 <script setup>
-// import {permissionStore} from "@/stores/Permission.js";
-import router from "@/router/index.js";
-import {authLogin} from "@/api/modules/api.login.js";
 import {useAuthStore} from "@/stores/Users.js";
-import {ZyNotification} from "../../utils/util.toast";
 import IconCommunity from "@/components/icons/IconCommunity.vue";
 
 const userStore = useAuthStore()
@@ -107,7 +104,7 @@ const rules = reactive({
 })
 
 const submitForm = (formEl) => {
-  if (!formEl) return
+  if (!formEl) return;
   formEl.validate((valid) => {
     if (valid) {
       loading.value = true
@@ -117,12 +114,12 @@ const submitForm = (formEl) => {
           message: `登录成功，欢迎回来: ${res.userInfo.nickname}`,
           type: 'success',
         })
-        // ZyNotification.success(`欢迎: ${res.userInfo.nickname}`, '登录成功')
       }).catch(err => {
         loading.value = false
       })
     } else {
       console.log('error submit!')
+      resetForm
     }
   })
 }
@@ -148,9 +145,7 @@ const resetForm = (formEl) => {
     height: 100%;
     background-color: var(--menu-background);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
-    //background-image: linear-gradient(45deg, #1022e3 0%, #fad0c4 99%, #fad0c4 100%);
-    //background-image: url('https://i.pinimg.com/564x/fa/31/33/fa31338cb516ad9ee955eea01bc6b387.jpg');
-    //background-size: 100% 100%;
+
 
     border-right: 1px solid var(--el-border-color);
     position: relative;
@@ -166,7 +161,6 @@ const resetForm = (formEl) => {
 
     .login-form-box {
       padding: 35px;
-      //background-color: rgba(#fff,.5);
       border-radius: 8px;
 
       .form-box-head {
@@ -215,9 +209,6 @@ const resetForm = (formEl) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    //background-image: url('https://i.pinimg.com/564x/f7/18/8d/f7188d253ebe032b9eb678e43e78c2bf.jpg');
-    //background-position: center center;
-    //background-size: cover;
 
 
     .aside-info {
@@ -229,6 +220,15 @@ const resetForm = (formEl) => {
         position: absolute;
         left: -2rem;
         top: -100px;
+        font-size: 160px;
+        color: #eeeeee;
+        z-index: -1;
+      }
+
+      .info-b {
+        position: absolute;
+        left: -2rem;
+        top: 100px;
         font-size: 160px;
         color: #eeeeee;
         z-index: -1;

@@ -3,7 +3,7 @@
   <div class="zy-logo">
     <img :width="size" :src="url || setting.websiteInfo.logo ||logo">
     <span v-if="showTitle"
-          class="title">{{ setting.websiteInfo.name || 'ZHOUYI' }}@{{ setting.websiteInfo.version || '1.0.0' }}</span>
+          class="title">{{ setting.websiteInfo.name || 'C柠檬呐' }}@{{ setting.websiteInfo.version || '1.0.0' }}</span>
   </div>
   </transition>
 </template>

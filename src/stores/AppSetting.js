@@ -77,6 +77,7 @@ export const useAppStore = defineStore("AppSetting", () => {
     }
     // 水印控制
     const changeWatermarking = () => {
+        console.log(`水印内容为：${watermarking.value}`)
         watermarking.value = !watermarking.value;
         dbUtils.set('watermarking', watermarking.value)
     }

@@ -250,16 +250,7 @@ const constantRoutes = [
                     },
                 ]
             },
-            // {
-            //     path: "/frame",
-            //     name: 'frame',
-            //     meta: {
-            //         title: '文档教程（准备中）',
-            //         icon: "Link",
-            //         url: 'https://gitee.com/Z568_568/ZHOUYI-ADMIN.git'
-            //     },
-            //     component: () => import("@/views/sys/frame/index.vue"),
-            // },
+
             {
                 path: "https://gitee.com/Z568_568/ZHOUYI-ADMIN",
                 name: 'link',

@@ -21,9 +21,7 @@ app.use(router)
 app.use(createPinia())
 app.use(ElementPlus, {size: setting.theme.size})
 
-utilLog.capsule('ZYAdmin', `欢迎使用${setting.websiteInfo.name}，当前版本:${setting.websiteInfo.version}`)
-utilLog.capsule('作者主页', 'https://gitee.com/Z568_568', 'success')
-// utilLog.admin()
+utilLog.capsule('VuePwd', `欢迎使用${setting.websiteInfo.name}，当前版本:${setting.websiteInfo.version}`)
 
 
 app.mount('#app')

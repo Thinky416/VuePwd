@@ -83,15 +83,15 @@ const openSearchPanel = () => {
               src="https://marketplace.canva.com/EAFMNm9ybqQ/1/0/1600w/canva-gold-luxury-initial-circle-logo-qRQJCijq_Jw.jpg"
           />
           <div class="title " v-if="appStore.sidebar.opened">
-            <p class="nickname">书中枫叶</p>
-            <p class="status">ZHOUYI-ADMIN</p>
+            <p class="nickname">C柠檬呐</p>
+            <p class="status">VuePwd</p>
           </div>
         </div>
       </template>
       <div class="userinfo-box">
         <div class="userinfo-detail">
-          <p class="nickname">书中枫叶</p>
-          <p class="username">ZHOUYI-ADMIN</p>
+          <p class="nickname">C柠檬呐</p>
+          <p class="username">VuePwd</p>
         </div>
 
         <div class="box-item login-info">

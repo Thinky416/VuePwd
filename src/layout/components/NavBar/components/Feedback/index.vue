@@ -80,7 +80,7 @@ const resetForm = (formEl) => {
       </el-form>
       <div class="tips">
         有技术问题反馈或项目合作吗?也可直接联系
-        <a href="https://gitee.com/Z568_568" target="_blank" > ZHOUYI作者 </a>或浏览 <a target="_blank" href="https://gitee.com/Z568_568/ZHOUYI-ADMIN"> 项目文档 </a>。
+        <a href="https://gitee.com/Z568_568" target="_blank" > 作者 </a>或浏览 <a target="_blank" href="https://gitee.com/Z568_568/ZHOUYI-ADMIN"> 项目文档 </a>。
       </div>
     </section>
   </el-popover>

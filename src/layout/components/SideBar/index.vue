@@ -43,7 +43,7 @@ initSideMenus()
             ZY
           </router-link>
           <router-link v-else class="wh-full flex-center" to="/">
-            <span class="logo-title">ZHOUYI</span>
+            <span class="logo-title">VuePwd</span>
           </router-link>
         </transition>
       </div>
@@ -79,7 +79,7 @@ initSideMenus()
             ZY
           </router-link>
           <router-link v-else class="wh-full flex-center" to="/">
-            <span class="logo-title">ZHOUYI</span>
+            <span class="logo-title">VuePwd</span>
           </router-link>
         </transition>
       </div>
