@@ -1,0 +1,2 @@
+--临时绕行执行策略
+Set-ExecutionPolicy Bypass -Scope Process

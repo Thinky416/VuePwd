@@ -4,9 +4,9 @@
       <!-- <ZyLogo class="logo"/> -->
       <section class="login-form-box">
         <div class="form-box-head">
-          <h1>Password Management</h1>
+          <h1>HKIC No. Check Digital</h1>
           <p>
-            登录您的帐户
+            This is a demo
           </p>
         </div>
         <el-form
@@ -21,41 +21,26 @@
             class="demo-ruleForm"
             size="large"
         >
-          <el-form-item label="用户名" prop="username">
+          <el-form-item label="HKIC No Src" prop="hkicSrc">
             <el-input
-                v-model="ruleForm.username"
+                v-model="ruleForm.hkicSrc"
                 type="text"
                 autocomplete="off"
-                placeholder="admin"
+                placeholder="C111111"
+                maxlength = 8
+                @input = 'hkicLimit'
                 @keyup.enter="submitForm(ruleFormRef)"
+                @blur="submitForm(ruleFormRef)"
             />
           </el-form-item>
-          <el-form-item label="密码" prop="password">
-            <el-input v-model="ruleForm.password" @keyup.enter="submitForm(ruleFormRef)" placeholder="123456"
-                      type="password" autocomplete="off"/>
-          </el-form-item>
-          <el-form-item style="margin-top: 55px">
-            <el-button style="width: 100%" type="primary" @click="submitForm(ruleFormRef)" :loading="loading">
-              登录
-            </el-button>
+          <el-form-item label="Whole HKIC No." prop="hkicTar">
+            <el-input v-model="ruleForm.hkicTar" 
+                      type="text" autocomplete="off"
+                      placeholder="C1111114"
+                      />
           </el-form-item>
         </el-form>
         <div class="form-box-footer">
-          <p class="tips">支持以下登录方式（推荐使用）</p>
-          <div class="footer-other">
-            <el-icon style="margin-right: 8px">
-              <IconCommunity/>
-            </el-icon>
-            <el-icon style="margin-right: 8px">
-              <IconOne/>
-            </el-icon>
-            <el-icon style="margin-right: 8px">
-              <IconTwo/>
-            </el-icon>
-            <el-icon>
-              <IconCommunity/>
-            </el-icon>
-          </div>
         </div>
 
       </section>
@@ -83,61 +68,91 @@
 </template>
 
 <script setup>
-import {useAuthStore} from "@/stores/Users.js";
-import IconCommunity from "@/components/icons/IconCommunity.vue";
 
-const userStore = useAuthStore()
 const ruleFormRef = ref()
-const loading = ref(false)
 
 
 const ruleForm = reactive({
-  username: '',
-  password: '',
+  hkicSrc: '',
+  hkicTar: '',
 })
 
 const rules = reactive({
-  username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
-  password: [{required: true, message: '密码不能为空', trigger: 'blur'}],
+  hkicSrc: [
+    {required: true, 
+      message: 'can not be null', 
+      trigger: 'blur'
+    },
+    { 
+      validator: (rule, value, callback) => {
+        // 假设我们用正则验证是否为有效的电子邮件
+        const hkidPatten1 = /^[ ]*[A-Z]{1,2}[0-9]{6}$/;
+        const hkidPatten2 = /^[ ]*[A-TV-Z]{1,2}[0-9]{6}$/;
+        if (!value) {
+          return callback(new Error('This field is required'));
+        }
+        if ((!hkidPatten1.test(value)) && (!hkidPatten2.test(value)) ) {
+          return callback(new Error('Invalid hkic format'));
+        }
+        callback(); // 验证通过
+      },
+      trigger: 'blur' 
+    }
+  
+  ],
+  hkicTar: [{required: false, message: '', trigger: 'blur'}],
 })
 
-const submitForm = (formEl) => {
-
-  loading.value = true;
-      userStore.login(ruleForm).then(res => {
-        loading.value = false
-        ElMessage({
-          message: `登录成功，欢迎回来: ${res.userInfo.nickname}`,
-          type: 'success',
-        })
-        return;
-      })
-    }
-//   if (!formEl) return;
-//   formEl.validate((valid) => {
-//     if (valid) {
-//       loading.value = true
-//       userStore.login(ruleForm).then(res => {
-//         loading.value = false
-//         ElMessage({
-//           message: `登录成功，欢迎回来: ${res.userInfo.nickname}`,
-//           type: 'success',
-//         })
-//       }).catch(err => {
-//         loading.value = false
-//       })
-//     } else {
-//       console.log('error submit!')
-//       resetForm
-//     }
-//   })
-// }
-
-const resetForm = (formEl) => {
-  if (!formEl) return
-  formEl.resetFields()
+const hkicLimit = ()=>{
+  ruleForm.hkicSrc =  ruleForm.hkicSrc.toUpperCase()
 }
 
+
+  // 字母对应数字的键值对
+  let alphaDict = {};
+    for (let i = 0; i < 26; i++) {
+        let letter = String.fromCharCode(65 + i); // 65 是 'A' 的 ASCII 码
+        alphaDict[letter] = i + 1; // 'A' -> 1, 'B' -> 2, ..., 'Z' -> 26
+    }
+
+const submitForm = ()=>{
+        var engVal = 0;
+        var firstIdx = 0;
+        var firstMul = 0;
+        if(ruleForm.hkicSrc.length == 8){
+            //计算规则不具有普遍性（字母全0）
+            engVal = (alphaDict[ruleForm.hkicSrc[0]] + alphaDict[ruleForm.hkicSrc[1]])* 8  ;
+            firstIdx=2;
+            firstMul = 7;
+        }
+        else{
+            engVal = alphaDict[ruleForm.hkicSrc[0]]*8;
+            firstIdx=1;
+            firstMul = 7;
+        }
+
+        var numVal = 0;
+        var index = firstMul;
+        for (let i = firstIdx; i < ruleForm.hkicSrc.length ; i++) {
+            numVal += ruleForm.hkicSrc[firstIdx]*index;
+            firstIdx++;
+            index--;
+       }
+
+        var divVal = (engVal + numVal) % 11;
+        switch(divVal)
+        {
+            case 0:
+                ruleForm.hkicTar = (`${ruleForm.hkicSrc}${divVal}`);
+                 break;
+            case 1:
+                ruleForm.hkicTar  =(`${ruleForm.hkicSrc}A`);
+                break;
+            default:
+                ruleForm.hkicTar  =(`${ruleForm.hkicSrc}${11-divVal}`);
+                break;
+        }
+}
 
 </script>
 

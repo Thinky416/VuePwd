@@ -283,7 +283,7 @@ const constantRoutes = [
                 component: () => import("@/views/sys/error-page/401.vue"),
                 meta: {hidden: true},
             },
-                        {
+            {
                 path: "/pwd",
                 name: "pwd",
                 redirect: "/pwd",
@@ -386,7 +386,38 @@ const constantRoutes = [
                     // },
                 ]
             },
+            {
+                path: "/hkid",
+                name: "hkid",
+                redirect: "/hkid",
+                meta: {
+                    title: "HKIC Tool",
+                    icon: "",
 
+                    requiresAuth: true,
+                    cache: true,
+                    perms: [
+                        "/hkid"
+                    ],
+
+                },
+                children: [
+                    {
+                        path: "/tool",
+                        component: () => import("@/views/hkid/hkid.vue"),
+                        name: "tool",
+                        meta: {
+                            title: "tool",
+                            icon: "",
+                            requiresAuth: true,
+                            cache: true,
+                            perms: [
+                              
+                            ],
+                        },
+                    },
+                ]
+            }
         ]
     },
     {
