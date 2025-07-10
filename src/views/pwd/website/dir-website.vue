@@ -5,16 +5,15 @@ import {TimeUtils} from "utils/util.time";
 import {Confirm, CustNotification} from "@/utils/util.toast.js";
 import GetPage from "@/views/components/page/get-page.vue";
 import ViewPage from "@/views/components/page/view-page.vue";
-import GetItems from "@/views/pwd/item/get-items.vue";
-import ViewItems from "@/views/pwd/item/view-items.vue";
+import GetWebsites from "@/views/pwd/website/get-websites.vue";
+import ViewWebsites from "@/views/pwd/website/view-websites.vue";
 
 const tableData = ref([])
 const fields = reactive([
   // {key: 'checkBox', name: '选择', show: true, align: "center", enableSort: false, fixed: false},
-  {key: 'name', name: '名称', show: true, align: "left", enableSort: false, fixed: false},
+  {key: 'name', name: '站点名称', show: true, align: "left", enableSort: false, fixed: false},
   {key: 'url', name: '网址', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'logonName', name: '登录名', show: true, align: "left", enableSort: false, fixed: false},
-  {key: 'logonPwd', name: '登录密码', show: true, align: "center", enableSort: false, fixed: false},
+  {key: 'group', name: '所属分组', show: true, align: "left", enableSort: false, fixed: false},
   {key: 'createdAt', name: '创建时间', show: true, align: "center", enableSort: true, fixed: false},
   {key: 'updatedAt', name: '更新时间', show: true, align: "center", enableSort: false, fixed: false},
   {key: 'toolButton', name: '操作', show: true, align: "center", width: '220', enableSort: false, fixed: 'right'},
@@ -104,23 +103,20 @@ const getDataList = async () => {
             "_id": "64a6767b2f517ae48b51de4a",
             "name": "ASL",
             "sortOrder": 0,
-            "createdAt": "2023-07-06T08:08:27.735Z",
-            "updatedAt": "2023-07-18T03:16:59.334Z",
-            "disabled": false
+            "disabled": true
           },
           {
             "_id": "64a676872f517ae48b51de50",
             "name": "ASL_EPMI",
             "sortOrder": 0,
             "status": true,
-            "createdAt": "2023-07-06T08:08:39.650Z",
-            "updatedAt": "2023-07-06T13:26:57.493Z",
-            "disabled": false,
+            "disabled": true,
             "children": [
               {
                 "_id": "64a676942f517ae48b51de56",
                 "name": "Jira",
                 "url":"http://baidu.com",
+                "group":"ASL_EPMI",
                 "logonName":"Test",
                 "logonPwd":"Abcd1234",
                 "sortOrder": 0,
@@ -132,6 +128,7 @@ const getDataList = async () => {
                 "_id": "64a6f171d2fac9dd58d3025c",
                 "name": "哔哩哔哩",
                 "url":"http://bilibili.com",
+                "group":"ASL_EPMI",
                 "logonName":"Test",
                 "logonPwd":"Abcd1234",
                 "sortOrder": 0,
@@ -339,12 +336,12 @@ goPage(1)
                 width="40%"
                 :title="tempData.dialogTitle"
                 @close="close">
-      <GetItems :update-data="tempData.updateData" @close="close"/>
+      <GetWebsites :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
     <ZyElDialog :show="tempData.showView"
                 title="查看详情"
                 @close="close">
-      <ViewItems :update-data="tempData.updateData" @close="close"/>
+      <ViewWebsites :update-data="tempData.updateData" @close="close"/>
     </ZyElDialog>
 
   </section>

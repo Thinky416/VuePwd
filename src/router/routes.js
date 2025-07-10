@@ -317,11 +317,11 @@ const constantRoutes = [
                         },
                     },
                     {
-                        path: "/items",
-                        component: () => import("@/views/pwd/item/dir-item.vue"),
-                        name: "items",
+                        path: "/website",
+                        component: () => import("@/views/pwd/website/dir-website.vue"),
+                        name: "websites",
                         meta: {
-                            title: "数据管理",
+                            title: "站点管理",
                             icon: "",
                             requiresAuth: true,
                             cache: true,

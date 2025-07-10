@@ -1,7 +1,10 @@
 // util.time.js
 
+import { isEmptyObject } from "./util.common";
+
 export class TimeUtils {
     static formatTime(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
+        if(date===undefined) return date;
         let crtTime = new Date(date);
         let o = {
             "M+": crtTime.getMonth() + 1,               //月份
@@ -22,6 +25,7 @@ export class TimeUtils {
 
 
     static formatRelativeTime(date) {
+        if(date===undefined) return date;
         const now = new Date();
         const diff = now - new Date(date);
 

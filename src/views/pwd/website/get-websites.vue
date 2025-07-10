@@ -8,8 +8,9 @@ const loading = ref(false)
 let ruleForm = ref({})
 
 const rules = reactive({
-  name: [{required: true, message: '名称不能为空', trigger: 'blur'}],
-  key: [{required: true, message: '权限标识不能为空', trigger: 'blur'}],
+  name: [{required: true, message: '站点名称不能为空', trigger: 'blur'}],
+  urlAddr: [{required: false, message: '网址为空', trigger: 'blur'}],
+  group: [{required: false, message: '未选择分组', trigger: 'blur'}],
 })
 const emits = defineEmits(['save', 'close'])
 const props = defineProps({
@@ -59,40 +60,23 @@ onMounted(() => {
              label-width="auto" class="demo-ruleForm" size="default">
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="名称" prop="name">
+          <el-form-item label="站点名称" prop="name">
             <el-input v-model="ruleForm.name" autocomplete="off"/>
           </el-form-item>
         </el-col>
+      </el-row>
 
-      </el-row>
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="父级标识" prop="parent_key">
-            <el-input v-model="ruleForm.parent_key" autocomplete="off"/>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="权限标识" prop="key">
-            <el-input v-model="ruleForm.key" autocomplete="off"/>
+          <el-form-item label="所属分组" prop="group">
+            <el-input v-model="ruleForm.group" autocomplete="off"/>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row :gutter="20">
         <el-col :span="12">
-          <el-form-item label="权限按钮" prop="auth">
-            <el-switch active-text="权限按钮" inactive-text="普通菜单" v-model="ruleForm.auth"/>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="状态" prop="status">
-            <el-switch active-text="正常" inactive-text="停用" v-model="ruleForm.status"/>
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row :gutter="20" v-if="ruleForm?.add">
-        <el-col :span="12">
-          <el-form-item label="自动生成权限按钮" prop="auth">
-            <el-switch v-model="ruleForm.auth"/>
+          <el-form-item label="网址" prop="urlAddr">
+            <el-input v-model="ruleForm.urlAddr" autocomplete="off"/>
           </el-form-item>
         </el-col>
       </el-row>
