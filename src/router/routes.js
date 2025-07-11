@@ -417,6 +417,38 @@ const constantRoutes = [
                         },
                     },
                 ]
+            },
+            {
+                path: "/test",
+                name: "test",
+                redirect: "/test",
+                meta: {
+                    title: "EX",
+                    icon: "",
+
+                    requiresAuth: true,
+                    cache: true,
+                    perms: [
+                        "/test"
+                    ],
+
+                },
+                children: [
+                    {
+                        path: "/index",
+                        component: () => import("@/views/testExpress/test.vue"),
+                        name: "testIdx",
+                        meta: {
+                            title: "testIdx",
+                            icon: "",
+                            requiresAuth: true,
+                            cache: true,
+                            perms: [
+                              
+                            ],
+                        },
+                    },
+                ]
             }
         ]
     },

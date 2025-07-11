@@ -8,7 +8,7 @@
                 type="text"
                 autocomplete="off"
                 placeholder="admin"
-                @keyup.enter="submitForm(ruleFormRef)"
+                @keyup.enter="getDataList"
             />
           </el-form-item>
      </el-form>
@@ -30,15 +30,16 @@ const rules = reactive({
   test: [{required: false, message: '用户名不能为空', trigger: 'blur'}],
 })
 
+
 const getDataList = async () => {
+  console.log(`I am here`)
   try {
-    loading.value.list = true
+    loading.value = true
     // const dataList = await usersList(query)
-    const data = await axios.get("localhost:3001")
+    const data = await axios.get("http://localhost:3001/test/index")
     ruleForm.test = data;
-
-  }catch {
-
+  }catch (e){
+    console.error(`I met some problem: ${e}`);
    }
   }
 </script>
